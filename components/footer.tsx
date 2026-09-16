@@ -1,61 +1,23 @@
-import Link from "next/link";
 import Image from "next/image";
-import { FaXTwitter, FaDiscord } from "react-icons/fa6";
-export default function Home() {
+import Link from "next/link";
+import { MessageCircle, Twitter } from "lucide-react";
+
+export default function Footer() {
   return (
-    <footer className="mt-auto p-4 bg-gray-800 text-white">
-      <div className="flex flex-wrap justify-center gap-10">
-        <div className="flex flex-col gap-2">
-          <Link className="flex items-center gap-2" href="/">
-            <Image
-              alt="logo"
-              className="w-10 h-10 sm:w-12 sm:h-12"
-              width={100}
-              height={100}
-              src="/icon.png"
-            />
-            <h1 className="text-xl sm:text-2xl font-semibold">QuiryLab</h1>
-          </Link>
-          <p className="mt-4 text-gray-300 text-sm leading-relaxed max-w-xs">
-            自由に模索し、情報共有できるコミュニティです。
-          </p>
-          <div className="flex items-center text-gray-300 text-sm mb-3">
-            info@quirylab.com
-          </div>
-          <div className="flex gap-4 mt-6">
-            <a
-              className="w-10 h-10 bg-gray-100 hover:bg-blue-100 rounded-full flex items-center justify-center transition-all duration-300 group shadow-sm"
-              href="https://x.com/quiryLab"
-            >
-              <FaXTwitter className="w-5 h-5 text-gray-800 group-hover:text-blue-500 transition-all duration-300" />
-            </a>
-            <a
-              className="w-10 h-10 bg-gray-100 hover:bg-indigo-100 rounded-full flex items-center justify-center transition-all duration-300 group shadow-sm"
-              href="https://discord.gg/vJ6kf8SnYm"
-            >
-              <FaDiscord className="w-5 h-5 text-gray-800 group-hover:text-indigo-500 transition-all duration-300" />
-            </a>
+    <footer className="border-t bg-muted/30">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div>
+          <Link className="flex items-center gap-2.5" href="/"><Image alt="" className="size-8 rounded-lg" width={80} height={80} src="/icon.png" /><span className="font-semibold tracking-tight">QuiryLab</span></Link>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">自由に模索し、情報を共有するためのコミュニティです。</p>
+          <div className="mt-5 flex gap-2">
+            <a className="inline-flex size-9 items-center justify-center rounded-md border bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground" href="https://x.com/quiryLab" aria-label="X" target="_blank" rel="noreferrer"><Twitter className="size-4" /></a>
+            <a className="inline-flex size-9 items-center justify-center rounded-md border bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground" href="https://discord.gg/vJ6kf8SnYm" aria-label="Discord" target="_blank" rel="noreferrer"><MessageCircle className="size-4" /></a>
           </div>
         </div>
-        <div className="flex flex-col gap-2 p-2">
-          <h1 className="font-bold text-xl">Infomation</h1>
-          <nav className="flex flex-col gap-1 text-sm text-gray-300">
-            <Link href="/">ホーム</Link>
-            <Link href="/about">QuiryLabについて</Link>
-            <Link href="/service">サービス</Link>
-          </nav>
-        </div>
-        <div className="flex flex-col gap-2 p-2">
-          <h1 className="font-bold text-xl">Legal</h1>
-          <nav className="flex flex-col gap-1 text-sm text-gray-300">
-            <Link href="/terms-of-service">利用規約</Link>
-            <Link href="/privacy-policy">プライバシーポリシー</Link>
-          </nav>
-        </div>
+        <div className="space-y-3 text-sm"><p className="font-medium">Navigation</p><div className="flex flex-col gap-2 text-muted-foreground"><Link href="/" className="hover:text-foreground">ホーム</Link><Link href="/about" className="hover:text-foreground">QuiryLabについて</Link><Link href="/service" className="hover:text-foreground">サービス</Link></div></div>
+        <div className="space-y-3 text-sm"><p className="font-medium">Legal</p><div className="flex flex-col gap-2 text-muted-foreground"><Link href="/terms-of-service" className="hover:text-foreground">利用規約</Link><Link href="/privacy-policy" className="hover:text-foreground">プライバシーポリシー</Link><a href="mailto:info@quirylab.com" className="hover:text-foreground">info@quirylab.com</a></div></div>
       </div>
-      <p className="text-sm text-gray-300 p-6 text-center">
-        © 2025 QuiryLab. All rights reserved.
-      </p>
+      <div className="border-t"><p className="mx-auto max-w-6xl px-5 py-5 text-xs text-muted-foreground sm:px-6">© {new Date().getFullYear()} QuiryLab. All rights reserved.</p></div>
     </footer>
   );
 }

@@ -1,93 +1,36 @@
 "use client";
-import Link from "next/link";
+
 import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { IoIosLink } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
+import { Button } from "@/components/ui/button";
 
-export default function Home() {
+const navigation = [
+  { href: "/", label: "ホーム" },
+  { href: "/about", label: "QuiryLabについて" },
+  { href: "/service", label: "サービス" },
+];
+
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const MenuOpen = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   return (
-    <div>
-      <header className="relative flex items-center justify-between p-4 border-b bg-white dark:bg-black">
-        <Link href={"/"} className="flex items-center gap-2">
-          <Image
-            src={"/icon.png"}
-            width={100}
-            height={100}
-            alt="logo"
-            className="w-10 h-10 sm:w-12 sm:h-12"
-          />
-          <h1 className="text-xl sm:text-2xl font-semibold">QuiryLab</h1>
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-lg">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="QuiryLab ホーム">
+          <Image src="/icon.png" width={80} height={80} alt="" className="size-8 rounded-lg" priority />
+          <span className="text-base font-semibold tracking-tight">QuiryLab</span>
         </Link>
-        <nav className="hidden sm:flex items-center gap-4 text-lg m-0 p-2">
-          <Link href={"/"}>ホーム</Link>
-          <Link href={"/about"}>QuiryLabについて</Link>
-          <Link href={"/service"}>サービス</Link>
+        <nav className="hidden items-center gap-1 md:flex" aria-label="メインナビゲーション">
+          {navigation.map((item) => <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground">{item.label}</Link>)}
         </nav>
-        <div className="sm:hidden flex justify-end items-center w-10 h-10">
-          <button
-            className="cursor-pointer"
-            onClick={MenuOpen}
-            aria-label="メニューを開く"
-          >
-            <HiOutlineMenuAlt3 className="w-8 h-8 p-1" />
-          </button>
-        </div>
-      </header>
-
-      {isMenuOpen && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex z-[9999]">
-          <div
-            className="w-3/10 h-full bg-gray-600 cursor-pointer opacity-50"
-            onClick={MenuOpen}
-          />
-          <div className="w-7/10 h-full bg-black text-white flex flex-col animate-slide-in-right">
-            <button
-              onClick={MenuOpen}
-              className="absolute top-4 right-4 cursor-pointer"
-              aria-label="メニューを閉じる"
-            >
-              <IoClose className="w-8 h-8 p-1 text-white" />
-            </button>
-            <div className="flex flex-col items-center flex-1 p-14">
-              <h2 className="text-2xl mb-4">メニュー</h2>
-              <nav className="gap-4 flex flex-col items-center text-lg sm:text-lg m-0 p-0">
-                <Link href={"/"}>ホーム</Link>
-                <Link href={"/about"}>QuiryLabについて</Link>
-                <Link href={"/service"}>サービス</Link>
-              </nav>
-              <div className="mt-auto flex flex-col items-center gap-2 justify-end w-full">
-                <p className="text-gray-300 text-base">外部リンク</p>
-                <nav className="flex flex-row sm:flex-col items-center text-sm m-0 p-0 text-gray-400 gap-2">
-                  <a
-                    href="https://x.com/quiryLab"
-                    className="flex items-center gap-0.5"
-                  >
-                    X<IoIosLink />
-                  </a>
-                  <a
-                    href="https://discord.gg/vJ6kf8SnYm"
-                    className="flex items-center gap-0.5"
-                  >
-                    Discord
-                    <IoIosLink />
-                  </a>
-                </nav>
-                <p className="text-gray-300 text-base mt-2">規約</p>
-                <nav className="flex flex-row sm:flex-col items-center text-sm m-0 p-0 text-gray-400 gap-2">
-                  <Link href="/terms-of-service">利用規約</Link>
-                  <Link href="/privacy-policy">プライバシーポリシー</Link>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+        <a href="https://discord.gg/vJ6kf8SnYm" target="_blank" rel="noreferrer" className="hidden md:block"><Button size="sm">参加する</Button></a>
+        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}>{isMenuOpen ? <X /> : <Menu />}</Button>
+      </div>
+      {isMenuOpen && <div className="border-t bg-background px-5 py-4 md:hidden"><nav className="mx-auto flex max-w-6xl flex-col gap-1" aria-label="モバイルナビゲーション">
+        {navigation.map((item) => <Link key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium hover:bg-accent">{item.label}</Link>)}
+        <a href="https://discord.gg/vJ6kf8SnYm" target="_blank" rel="noreferrer" className="mt-2"><Button className="w-full">Discordで参加する</Button></a>
+      </nav></div>}
+    </header>
   );
 }
