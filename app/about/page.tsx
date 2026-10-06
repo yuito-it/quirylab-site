@@ -6,7 +6,7 @@ import { GrFormNextLink } from "react-icons/gr";
 import { IoMdHourglass } from "react-icons/io";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Quirylab - アバウト",
+  title: "QuiryLab - QuiryLabについて",
   description: "QuiryLabについてです",
 };
 export default function Home() {
