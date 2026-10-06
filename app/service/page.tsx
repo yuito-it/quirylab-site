@@ -54,7 +54,7 @@ export default function Home() {
                 <h4 className="text-xl font-bold">サブドメイン提供</h4>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Quirylab.comのサブドメインを提供します。わざわざ独自ドメインを取得する必要がなくなります。
+                quirylab.comのサブドメインを提供します。わざわざ独自ドメインを取得する必要がなくなります。
               </p>
             </div>
           </div>
