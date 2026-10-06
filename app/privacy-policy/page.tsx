@@ -101,15 +101,13 @@ export default function PrivacyPolicy() {
                   国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき
                 </li>
                 <li className="leading-relaxed">
-                  ・予め次の事項を告知あるいは公表し、かつ弊団体が個人情報保護委員会に届出をしたとき
-                  <ul className="ml-6 mt-2 space-y-1">
-                    <li>- 利用目的に第三者への提供を含むこと</li>
-                    <li>- 第三者に提供されるデータの項目</li>
-                    <li>- 第三者への提供の手段または方法</li>
-                    <li>
-                      - 本人の求めに応じて個人情報の第三者への提供を停止すること
-                    </li>
-                    <li>- 本人の求めを受け付ける方法</li>
+                  予め次の事項を告知あるいは公表し、かつ弊団体が個人情報保護委員会に届出をしたとき
+                  <ul className="ml-6 mt-2 space-y-1 list-disc">
+                    <li>利用目的に第三者への提供を含むこと</li>
+                    <li>第三者に提供されるデータの項目</li>
+                    <li>第三者への提供の手段または方法</li>
+                    <li>本人の求めに応じて個人情報の第三者への提供を停止すること</li>
+                    <li>本人の求めを受け付ける方法</li>
                   </ul>
                 </li>
               </ul>
@@ -212,8 +210,8 @@ export default function PrivacyPolicy() {
               <p className="leading-relaxed mb-4">
                 また、この分析にあたっては、主に以下のツールが利用され、ツール提供者に情報提供されることがあります。
               </p>
-              <ul className="space-y-2 ml-6 list-none mb-4">
-                <li className="leading-relaxed">・Google Analytics</li>
+              <ul className="space-y-2 ml-6 list-disc mb-4">
+                <li className="leading-relaxed">Google Analytics</li>
               </ul>
               <p className="leading-relaxed">
                 この他、クッキーは、提携する広告配信サービス提供会社における行動ターゲティング広告の配信に使用される場合があります。
